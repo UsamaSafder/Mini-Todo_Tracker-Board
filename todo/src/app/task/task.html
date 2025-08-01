@@ -1,0 +1,9 @@
+
+<form #taskForm="ngForm" (ngSubmit)="addTask()">
+  <input type="text" name="title" [(ngModel)]="title" placeholder="Title" required>
+  <input type="text" name="description" [(ngModel)]="description" placeholder="Description" required>
+  <select name="status" [(ngModel)]="status" required>
+    <option *ngFor="let status of statusArray" [value]="status">{{ status }}</option>
+  </select>
+  <button type="submit">Add Task</button>
+</form>
