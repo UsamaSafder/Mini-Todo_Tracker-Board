@@ -1,9 +1,58 @@
-
 <form #taskForm="ngForm" (ngSubmit)="addTask()">
-  <input type="text" name="title" [(ngModel)]="title" placeholder="Title" required>
-  <input type="text" name="description" [(ngModel)]="description" placeholder="Description" required>
+  <input type="text" name="title" [(ngModel)]="title" placeholder="Title" required />
+  <input type="text" name="description" [(ngModel)]="description" placeholder="Description" required />
+  <br>
+  
   <select name="status" [(ngModel)]="status" required>
     <option *ngFor="let status of statusArray" [value]="status">{{ status }}</option>
   </select>
+
   <button type="submit">Add Task</button>
 </form>
+<br>
+
+
+  <!-- To Do Section -->
+   <h3>To Do</h3>
+    <p style="color: green;">✅ This is projected into app-task</p>
+  <ng-container *ngIf="todoTasks.length > 0">
+    
+    <ul>
+      <li *ngFor="let task of todoTasks">
+        {{ task.title }} — {{ task.description }}
+         --<select  name="statusTodo" [(ngModel)]="statusTodo" required>
+          <option value="" disabled selected hidden>Select status</option>
+    <option *ngFor="let status of statusArray" [value]="status">{{ status }}</option>
+  </select> <button (click)="moveTask(task.id,task.status)">Move</button>
+      </li>
+    </ul>
+  </ng-container>
+<hr>
+  <h3>In Progress</h3>
+  <ng-container *ngIf="inProgressTasks.length > 0">
+    
+    <ul>
+      <li *ngFor="let task of inProgressTasks">
+        {{ task.title }} — {{ task.description }}--<select name="statusInProgress" [(ngModel)]="statusInProgress" required>
+          <option value="" disabled selected hidden>Select status</option>
+    <option *ngFor="let status of statusArray" [value]="status">{{ status }}</option>
+  </select> -- <button (click)="moveTask(task.id,task.status)">Move</button>
+      </li>
+    </ul>
+  </ng-container>
+<hr>
+  <h3>Done</h3>
+  <ng-container *ngIf="doneTasks.length > 0">
+    
+    <ul>
+      <li *ngFor="let task of doneTasks">
+        {{ task.title }} — {{ task.description }}--
+ 
+      </li>
+    </ul>
+  </ng-container>
+
+
+
+
+
