@@ -97,6 +97,4 @@ Your contributions are always welcome! You can help by:
 **Usama Bin Safder** — Frontend Developer & Angular Enthusiast
 Check out more of my work on [GitHub](https://github.com/UsamaSafder)
 
----
 
-Want to add screenshots or version badges? Happy to help you enhance it further!
