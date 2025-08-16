@@ -17,7 +17,7 @@ export class TaskService {
   inProgressTasks: any[] = [];
   doneTasks: any[] = [];
 
-  // ✅ New: EventEmitter to notify about task updates
+
   taskUpdated: EventEmitter<void> = new EventEmitter();
 
   addTask(id: number, title: string, description: string, status: string) {
@@ -47,13 +47,13 @@ export class TaskService {
     console.log(`🚧 In Progress Tasks:`, this.inProgressTasks);
     console.log(`✅ Done Tasks:`, this.doneTasks);
 
-    // ✅ Emit event so subscribers know something changed
+  
     this.taskUpdated.emit();
   }
 updateTodoTask(id:number,status:string){
   console.log(`✅ updateTodoTask called with ID: ${id} | Status: ${status}`);
   if(status==='In Progress'){
-    //remove from todolist and add in inprogress
+   
     this.todoTasks = this.todoTasks.filter(task => task.id !== id);
     const taskToUpdate = this.tasks.find(task => task.id === id);
     if (taskToUpdate) {
@@ -63,7 +63,7 @@ updateTodoTask(id:number,status:string){
     }
   }
   else if(status==='Done'){
-    //update from todo to done
+
     this.todoTasks = this.todoTasks.filter(task => task.id !== id);
     const taskToUpdate = this.tasks.find(task => task.id === id);
     if (taskToUpdate) {
@@ -77,7 +77,7 @@ updateInProgressTask(id:number,status:string){
   console.log(`✅ updateInProgressTask called with ID: ${id} | Status: ${status}`);
 
   if(status==='To Do'){
-    //remove from inprogress and add in todo
+    
     this.inProgressTasks = this.inProgressTasks.filter(task => task.id !== id);
     const taskToUpdate = this.tasks.find(task => task.id === id);
     if (taskToUpdate) {
@@ -86,7 +86,7 @@ updateInProgressTask(id:number,status:string){
         this.taskUpdated.emit();
     }
   } else if(status==='Done'){
-    //remove from inprogress and add in done
+    
     this.inProgressTasks = this.inProgressTasks.filter(task => task.id !== id);
     const taskToUpdate = this.tasks.find(task => task.id === id);
     if (taskToUpdate) {
