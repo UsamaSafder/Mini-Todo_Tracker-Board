@@ -39,12 +39,11 @@ statusDone='';
  
 
   ngOnInit() {
-    // Initial load
+   
     this.refreshTaskLists();
 
     console.log('Card component initialized');
     
-    // ✅ React to task addition
     this.taskService.taskUpdated.subscribe(() => {
       this.refreshTaskLists();
       console.log('Task list updated');
